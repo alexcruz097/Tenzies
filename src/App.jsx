@@ -5,6 +5,11 @@ import Board from "./components/Board";
 function App() {
   const [board, setBoard] = useState([
     {
+      id: 0,
+      currentNum: 0,
+      numberHold: false,
+    },
+    {
       id: 1,
       currentNum: 1,
       numberHold: false,
@@ -49,19 +54,46 @@ function App() {
       currentNum: 9,
       numberHold: false,
     },
-    {
-      id: 10,
-      currentNum: 10,
-      numberHold: false,
-    },
   ]);
+
+  const [isWinner, setIsWinner] = useState(false);
+  const [numTries, setNumTries] = useState(0);
+
+  // roll new dice
+
+  function rollNewNum() {
+
+    // create new num of tries
+    setNumTries((prevTries) => {
+      return prevTries + 1;
+    });
+    // update num
+    setBoard((prevBoard) => {
+      return prevBoard.map((dice) => {
+        if (dice.numberHold !== true) {
+          return {
+            ...dice,
+            currentNum: Math.floor(Math.random() * board.length),
+          };
+        }
+        // return old
+        return dice;
+      });
+    });
+  }
+
+ 
   return (
     <div className="page flex justify-center content-center">
       <div className="flex flex-col items-center ">
         <Header />
-        <Board board={board}/>
-        <button className="bg-violet-600 text-white align px-8 py-1 rounded-lg">
-          Roll
+        <p>Number of Tries: {numTries}</p>
+        <Board board={board} setBoard={setBoard} setIsWinner={setIsWinner}/>
+        <button
+          onClick={rollNewNum}
+          className=" bg-violet-600 text-white align px-8 py-1 rounded-lg"
+        >
+         {isWinner? "Play Again": "Roll"} 
         </button>
       </div>
     </div>
