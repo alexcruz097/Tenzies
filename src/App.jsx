@@ -8,6 +8,9 @@ function App() {
       id: 0,
       currentNum: 0,
       numberHold: false,
+
+
+      
     },
     {
       id: 1,
