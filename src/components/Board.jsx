@@ -26,7 +26,7 @@ function Board(props) {
     if (winningNumber === "") {
       // set the current winning number
       setWinningNumber(dice.currentNum);
-
+     
       // set the numbers
       props.setBoard((prevBoard) => {
         return prevBoard.map((block) => {
@@ -35,6 +35,8 @@ function Board(props) {
           } // Return the original object for other elements
           return block;
         });
+
+        
       });
     }
 

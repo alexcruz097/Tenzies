@@ -8,9 +8,6 @@ function App() {
       id: 0,
       currentNum: 0,
       numberHold: false,
-
-
-      
     },
     {
       id: 1,
@@ -65,7 +62,7 @@ function App() {
   // roll new dice
 
   function rollNewNum() {
-
+   
     // create new num of tries
     setNumTries((prevTries) => {
       return prevTries + 1;
@@ -85,18 +82,17 @@ function App() {
     });
   }
 
- 
   return (
     <div className="page flex justify-center content-center">
       <div className="flex flex-col items-center ">
         <Header />
         <p>Number of Tries: {numTries}</p>
-        <Board board={board} setBoard={setBoard} setIsWinner={setIsWinner}/>
+        <Board board={board} setBoard={setBoard} setIsWinner={setIsWinner} />
         <button
           onClick={rollNewNum}
           className=" bg-violet-600 text-white align px-8 py-1 rounded-lg"
         >
-         {isWinner? "Play Again": "Roll"} 
+          {isWinner ? "Play Again" : "Roll"}
         </button>
       </div>
     </div>
