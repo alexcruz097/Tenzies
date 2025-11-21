@@ -26,20 +26,21 @@ function Board(props) {
     if (winningNumber === "") {
       // set the current winning number
       setWinningNumber(dice.currentNum);
-     
+
       // set the numbers
       props.setBoard((prevBoard) => {
         return prevBoard.map((block) => {
           if (block.id === dice.id) {
             return { ...block, numberHold: true };
           } // Return the original object for other elements
+
+
+          
           return block;
         });
-
-        
       });
     }
-
+   
     // change numberHold to true only if initial number is equal to winning number
     if (winningNumber === dice.currentNum) {
       props.setBoard((prevBoard) => {
